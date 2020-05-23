@@ -36,5 +36,3 @@ defmodule NucleotideCount do
     |> Map.new()
   end
 end
-
-# start with

@@ -1,16 +1,22 @@
 defmodule Bob do
   def hey(input) do
+    input = String.trim(input)
+    question = String.ends_with?(input, "?")
+    caps = String.upcase(input) == input
+    alphas = String.downcase(input) !== input
+    empty = input == ""
+
     cond do
-      Regex.match?(~r/^[^\p{Ll}]*[\p{Lu}][^\p{Ll}]*\?\s*$/u, input) ->
+      question and caps and alphas ->
         "Calm down, I know what I'm doing!"
 
-      Regex.match?(~r/^[^\p{Ll}]*[\p{Lu}][^\p{Ll}]*$/u, input) ->
+      caps and alphas ->
         "Whoa, chill out!"
 
-      Regex.match?(~r/^.*[[:print:]].*\?\s*$/u, input) ->
+      question ->
         "Sure."
 
-      Regex.match?(~r/^[^[:graph:]]*$/u, input) ->
+      empty ->
         "Fine. Be that way!"
 
       true ->

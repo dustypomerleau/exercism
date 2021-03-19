@@ -3,7 +3,7 @@ defmodule Bob do
     input = String.trim(input)
     question = String.ends_with?(input, "?")
     caps = String.upcase(input) == input
-    alphas = String.downcase(input) !== input
+    alphas = String.downcase(input) !== String.upcase(input)
     empty = input == ""
 
     cond do

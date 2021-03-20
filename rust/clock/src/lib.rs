@@ -8,17 +8,10 @@ pub struct Clock {
 
 impl Clock {
     pub fn new(hours: i32, minutes: i32) -> Self {
-        let mut h = (hours + (minutes / 60)) % 24;
-        let mut m = minutes % 60;
-        if m < 0 {
-            h -= 1;
-            m += 60;
-        }
-        if h < 0 {
-            h += 24;
-        }
         Clock {
-            time: NaiveTime::from_hms(h as u32, m as u32, 0),
+            time: NaiveTime::from_hms(0, 0, 0)
+                + Duration::hours(hours as i64)
+                + Duration::minutes(minutes as i64),
         }
     }
 
@@ -31,6 +24,6 @@ impl Clock {
 
 impl fmt::Display for Clock {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{:0>2}:{:0>2}", self.time.hour(), self.time.minute())
+        write!(f, "{:0>2}:{:0>2}", &self.time.hour(), &self.time.minute())
     }
 }

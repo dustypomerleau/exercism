@@ -10,12 +10,12 @@ impl Clock {
     pub fn new(hours: i32, minutes: i32) -> Self {
         let mut h = (hours + (minutes / 60)) % 24;
         let mut m = minutes % 60;
-        if h < 0 {
-            h += 24;
-        }
         if m < 0 {
             h -= 1;
             m += 60;
+        }
+        if h < 0 {
+            h += 24;
         }
         Clock {
             time: NaiveTime::from_hms(h as u32, m as u32, 0),

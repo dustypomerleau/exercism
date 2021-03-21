@@ -9,12 +9,12 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &'a [&str]) -> HashSet<&'
 
     for s in possible_anagrams {
         let s = *s;
-        let mut pc: Vec<char> = s.to_lowercase().chars().into_iter().collect();
-        if pc == c {
+        let mut p: Vec<char> = s.to_lowercase().chars().into_iter().collect();
+        if p == c {
             break;
         }
-        pc.sort_unstable();
-        if pc == cs {
+        p.sort_unstable();
+        if p == cs {
             h.insert(s);
         }
     }

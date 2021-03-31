@@ -27,7 +27,7 @@ pub fn sublist<T: PartialEq>(a: &[T], b: &[T]) -> Comparison {
 
 fn is_sublist<T: PartialEq>(x: &[T], y: &[T]) -> bool {
     let mut sub = false;
-    for i in 0..x.len() + 1 {
+    for i in 0..y.len() - x.len() + 1 {
         if x == &y[i..i + x.len()] {
             sub = true;
             break;

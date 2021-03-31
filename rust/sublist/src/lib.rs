@@ -7,10 +7,10 @@ pub enum Comparison {
 }
 
 pub fn sublist<T: PartialEq>(a: &[T], b: &[T]) -> Comparison {
-    match a {
-        [] => Comparison::Sublist,
-        _ => match a == b {
-            true => Comparison::Equal,
+    match a == b {
+        true => Comparison::Equal,
+        _ => match a {
+            [] => Comparison::Sublist,
             _ => match a.len() < b.len() {
                 true => match is_sublist(a, b) {
                     true => Comparison::Sublist,

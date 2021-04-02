@@ -1,5 +1,3 @@
-mod trash;
-
 #[derive(Debug, PartialEq)]
 pub enum Comparison {
     Equal,
